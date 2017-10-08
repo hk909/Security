@@ -1,0 +1,78 @@
+
+<<<<<<<<<<<<<-----------------------------------------------------------------------------This is the first Project Devloped by HK909-------------------------------------------------------------------------------->>>>>>>>>>>>>>
+
+
+                      IT WORK IN BOTH WINDOWS AND LINUX.
+
+	THIS TOOL IS WORK WITH THE COMMAND LINE WITHIN THE SAME FOLDER WHERE THIS TOOL IS CONTAIN, AND THE DATA WHICH YOU WANT TO ENCRYPT.
+
+
+1. First install Python in Windows /Debian /RedHat.
+
+2. If the modules is not include then,include it by your self.( However all modules are include in this script.) 
+
+	modules are :-            import os
+			import  random
+			import sys
+			import  pkg_resources
+			from Crypto.Cipher import AES
+                                                                from Crypto.Hash import SHA256
+
+
+
+
+To work with this Tool Follow and add all modules and packages to include in python.
+
+1.  This package provides two primary facilities for doing this, the command line interface
+
+	textract path/to/file.extension
+
+2.  or the python package
+
+	# some python file
+import textract
+text = textract.process("path/to/file.extension")
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+A look under the hood
+
+When textract.process('path/to/file.extension') is called, textract.process looks for a module called textract.parsers.extension_parser that also contains a Parser.
+
+textract.parsers.process(filename, encoding='utf_8', extension=None, **kwargs)[source]
+
+    This is the core function used for extracting text. It routes the filename to the appropriate parser and returns the extracted text as a byte-string encoded with encoding.
+
+Importantly, the textract.parsers.extension_parser.Parser class must inherit from textract.parsers.utils.BaseParser.
+
+class textract.parsers.utils.BaseParser[source]
+
+    Bases: object
+
+    The BaseParser abstracts out some common functionality that is used across all document Parsers. In particular, it has the responsibility of handling all unicode and byte-encoding.
+
+    decode(text)[source]
+
+        Decode text using the chardet package.
+
+    encode(text, encoding)[source]
+
+        Encode the text in encoding byte-encoding. This ignores code points that can’t be encoded in byte-strings.
+
+    extract(filename, **kwargs)[source]
+
+        This method must be overwritten by child classes to extract raw text from a filename. This method can return either a byte-encoded string or unicode.
+
+    process(filename, encoding, **kwargs)[source]
+
+        Process filename and encode byte-string with encoding. This method is called by textract.parsers.process() and wraps the BaseParser.extract() method in a delicious unicode sandwich.
+
+Many of the parsers rely on command line utilities to do some of the parsing. For convenience, the textract.parsers.utils.ShellParser class includes some convenience methods for streamlining access to the command line
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+<<<<<<<<<<<<<<<----------------------------------------------------------------------------------------------------THANKS FOR USING THIS TOOL---------------------------------------------------------------------------------------->>>>>>>>>>>>
+
+
